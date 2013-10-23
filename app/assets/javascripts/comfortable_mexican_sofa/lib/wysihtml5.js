@@ -4897,6 +4897,12 @@ wysihtml5.dom.parse = (function() {
     newNode = oldNode.ownerDocument.createElement(rule.rename_tag || nodeName);
     _handleAttributes(oldNode, newNode, rule);
 
+    //if its an iframe or object tag, copy all attributes
+    if( (currentRules.tags.iframe && !currentRules.tags.iframe.remove && oldNode.nodeName.toLowerCase() == "iframe") ||
+      (currentRules.tags.object && !currentRules.tags.object.remove && oldNode.nodeName.toLowerCase() == "object") ) {
+      newNode = oldNode.cloneNode();
+    }
+
     oldNode = null;
     return newNode;
   }
