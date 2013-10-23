@@ -120,7 +120,7 @@
               "</div>" +
               "<div class='modal-body'>" +
                 "<p>" + locale.video.info + "</p>" +
-                "<textarea style='height: 200px;' class='bootstrap-wysihtml5-insert-video'></textarea>"+
+                "<textarea class='bootstrap-wysihtml5-insert-video'></textarea>"+
               "</div>" +
               "<div class='modal-footer'>" +
                 "<a href='#' class='btn' data-dismiss='modal'>" + locale.video.cancel + "</a>" +
