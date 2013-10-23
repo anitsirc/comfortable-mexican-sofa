@@ -9,6 +9,7 @@
 #= require codemirror/modes/xml
 #= require codemirror/addons/edit/closetag
 #= require comfortable_mexican_sofa/lib/bootstrap
+#= require comfortable_mexican_sofa/lib/wysihtml5-advanced-parser
 #= require comfortable_mexican_sofa/lib/wysihtml5
 #= require comfortable_mexican_sofa/lib/bootstrap-wysihtml5
 #= require comfortable_mexican_sofa/lib/bootstrap-datetimepicker
@@ -57,6 +58,7 @@ window.CMS.wysiwyg = ->
       html:         true
       color:        false
       stylesheets:  []
+      parserRules:  wysihtml5ParserRules
 
   $(document).on('shown', '.bootstrap-wysihtml5-insert-image-modal', ( ->
     modal_body = $(this).find('.modal-body')
