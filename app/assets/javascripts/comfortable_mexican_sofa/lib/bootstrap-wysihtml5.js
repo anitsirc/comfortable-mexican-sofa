@@ -49,6 +49,7 @@
                   "<h3>" + locale.link.insert + "</h3>" +
                 "</div>" +
                 "<div class='modal-body'>" +
+                  "<input placeholder='Link text' value='' class='bootstrap-wysihtml5-insert-link-text input-xlarge'>" +
                   "<input value='http://' class='bootstrap-wysihtml5-insert-link-url input-xlarge'>" +
                 "</div>" +
                 "<div class='modal-footer'>" +
@@ -264,10 +265,13 @@
             //TODO refactor this block...
             var commandParams = inputValue;
             if (command=="createLink") {
+              var inputLinkTextField = insertObjectModal.find('.bootstrap-wysihtml5-insert-link-text');
+              var linkText = inputLinkTextField.val();
               commandParams = {
                     href: inputValue,
                     target: "_blank",
-                    rel: "nofollow"
+                    rel: "nofollow",
+                    text: linkText
                 };
             }
             self.editor.composer.commands.exec(command, commandParams);
