@@ -5067,7 +5067,7 @@ wysihtml5.dom.parse = (function() {
           return null;
         }
         return attributeValue.replace(wysihtml5.regexp['url'], function(match) {
-          return match.toLowerCase();
+          return match();
         });
       };
     })(),
