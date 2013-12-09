@@ -31,7 +31,7 @@ class CmsAdmin::SitesController < CmsAdmin::BaseController
   end
 
   def update
-    @site.update_attributes!(params[:site])
+    @site.update_attributes!(site_params)
     flash[:success] = I18n.t('cms.sites.updated')
     redirect_to :action => :edit, :id => @site
   rescue ActiveRecord::RecordInvalid
@@ -49,7 +49,7 @@ class CmsAdmin::SitesController < CmsAdmin::BaseController
 protected
 
   def build_site
-    @site = Cms::Site.new(params[:site])
+    @site = Cms::Site.new(site_params)
     @site.hostname ||= request.host.downcase
   end
 
@@ -61,4 +61,7 @@ protected
     redirect_to :action => :index
   end
 
+  def site_params
+    model_params(:site)
+  end
 end
