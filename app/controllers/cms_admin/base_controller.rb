@@ -48,4 +48,8 @@ protected
       flash.now[:error] = I18n.t('cms.base.fixtures_enabled')
     end
   end
+  
+  def model_params(name)
+    defined?(ActionController::StrongParameters) ? params.fetch(name, {}).permit! : params[name]
+  end
 end

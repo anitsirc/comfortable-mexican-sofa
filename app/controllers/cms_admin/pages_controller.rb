@@ -82,7 +82,7 @@ protected
   end
 
   def build_cms_page
-    @page = @site.pages.new(params[:page])
+    @page = @site.pages.new(page_params)
     @page.parent ||= (@site.pages.find_by_id(params[:parent_id]) || @site.pages.root)
     @page.layout ||= (@page.parent && @page.parent.layout || @site.layouts.first)
   end
@@ -93,7 +93,7 @@ protected
 
   def load_cms_page
     @page = @site.pages.find(params[:id])
-    @page.attributes = params[:page]
+    @page.attributes = page_params
     @page.layout ||= (@page.parent && @page.parent.layout || @site.layouts.first)
   rescue ActiveRecord::RecordNotFound
     flash[:error] = I18n.t('cms.pages.not_found')
@@ -108,5 +108,9 @@ protected
       @cms_page   = @page
       render :inline => @page.content(true), :layout => layout, :content_type => 'text/html'
     end
+  end
+
+  def page_params
+    model_params(:page)
   end
 end
